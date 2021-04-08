@@ -3,6 +3,7 @@
 module.exports = function(app) {
     var user = require('../controllers/userController')
     var nab = require('../controllers/nabController')
+    var unit = require('../controllers/unitController')
 
     app
     .route("/api/v1/user/add")
@@ -15,5 +16,13 @@ module.exports = function(app) {
     app
     .route("/api/v1/ib/listNAB")
     .get(nab.listNAB)
+
+    app
+    .route("/api/v1/ib/topup")
+    .post(unit.topUp)
+
+    app
+    .route("/api/v1/ib/withdraw")
+    .post(unit.withdraw)
 
 }
