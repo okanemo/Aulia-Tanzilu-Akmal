@@ -10,6 +10,7 @@ const options = {
 };
 
 mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
 
 mongoose.connect(uri, options).then(
     () => {
