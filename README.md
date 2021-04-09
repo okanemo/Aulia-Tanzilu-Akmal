@@ -32,3 +32,47 @@ var uri = "mongodb+srv://<username>:<password>@cluster0.b6yer.mongodb.net/myFirs
 npx nodemon server.js
 
 ```
+
+## List Endpoints
+
+API to add a new user
+
+```bash
+/api/v1/user/add
+
+```
+
+API to get all user
+
+```bash
+/api/v1/ib/member
+
+```
+
+API to update total balance
+
+```bash
+/api/v1/ib/updateTotalBalance
+
+```
+
+API to get all NAB
+
+```bash
+/api/v1/ib/listNAB
+
+```
+
+API to deposit balance
+
+```bash
+/api/v1/ib/topup
+
+```
+
+API to withdraw balance
+
+```bash
+/api/v1/ib/withdraw
+
+```
