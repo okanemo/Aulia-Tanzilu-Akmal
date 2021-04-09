@@ -25,15 +25,42 @@ exports.createNewUser = async (req, res) => {
 exports.member = async (req, res) => {
     const page = req.body.page != undefined ? req.body.page : 0;
     const limit = req.body.limit != undefined ? req.body.limit : 20;
-    const user = req.body.user_id != undefined ? await getUserByUserId(req, res, page, limit, req.body.user_id) : await getAllUser(req, res, page, limit)
-    const nab = await getLastNab(req, res)
-    const totalUnit = await getTotalUnit(req, res)
-    let currentNab = nab[0].nab
+    let user, nab, unit, userUnit
+    let totalUnit = 0
+
+    try {
+        user = req.body.user_id != undefined ? await User.find({_id: req.body.user_id}, '', {skip : page * limit, limit : limit}) : await User.find({},'', {skip : page * limit, limit : limit})
+    } catch (error) {
+        res.status(500).send(error)
+    }
+
+    try {
+        nab = await Nab.find({}, '-_id -__v', {sort: {date: -1}, limit : 1})
+    } catch (error) {
+        res.status(500).send(error)
+    }
+
+    try {
+        unit = await Unit.find({})
+        for (let data of unit) {
+            totalUnit += data.unit
+        }
+    } catch (error) {
+        res.status(500).send(error)
+    }
+
+    let currentNab = nab[0] == undefined ? 1 : nab[0].nab
     let users = []
 
     for (let data of user) {
-        const unit = await getUnitByUserId(req, res, data._id)
-        let currentUnit = unit[0].unit
+
+        try {
+            userUnit = await Unit.find({user_id: data._id})
+        } catch (error) {
+            res.status(500).send(error)
+        }
+
+        let currentUnit = userUnit[0].unit
         let temp = {
             user_id : data._id,
             name : data.name,
@@ -52,54 +79,4 @@ exports.member = async (req, res) => {
     }
 
     res.status(200).json(output)
-}
-
-let getAllUser = async (req, res, page, limit) => {
-    const user = await User.find({},'', {skip : page * limit, limit : limit})
-    try {
-        return user
-    } catch (error) {
-        res.status(500).send(error)
-    }
-}
-
-let getUserByUserId = async (req, res, page, limit, user_id) => {
-    const user = await User.find({_id: user_id}, '', {skip : page * limit, limit : limit})
-    try {
-        return user
-    } catch (error) {
-        res.status(500).send(error)
-    }
-}
-
-let getLastNab = async (req, res) => {
-    const nab = await Nab.find({}, '-_id -__v', {sort: {date: -1}, limit : 1})
-
-    try {
-        return nab
-    } catch (error) {
-        res.status(500).send(error)
-    }
-}
-
-let getUnitByUserId = async (req, res, user_id) => {
-    const unit = await Unit.find({user_id: user_id})
-    try {
-        return unit
-    } catch (error) {
-        res.status(500).send(error)
-    }
-}
-
-let getTotalUnit = async (req, res) => {
-    const unit = await Unit.find({})
-    try {
-        let totalUnit = 0
-        for (let data of unit) {
-            totalUnit += data.unit
-        }
-        return totalUnit
-    } catch (error) {
-        res.status(500).send(error)
-    }
 }
