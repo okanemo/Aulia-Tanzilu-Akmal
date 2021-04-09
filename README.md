@@ -5,7 +5,7 @@ Nozomu Investment RESTful API created by Aulia Tanzilu Akmal using ExpressJS and
 - [NodeJS](https://nodejs.org/en/)
 - [NPM](https://www.npmjs.com/get-npm)
 - [POSTMAN](https://www.postman.com/)
-- [MongoDb Atlas](https://www.mongodb.com/cloud/atlas)\
+- [MongoDb Atlas](https://www.mongodb.com/cloud/atlas)
 
 ## Project Setup
 ```sh
