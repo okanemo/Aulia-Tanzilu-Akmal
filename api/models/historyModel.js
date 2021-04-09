@@ -9,6 +9,10 @@ const historySchema = new Schema({
         type:String,
         required:true
     },
+    type: {
+        type:String,
+        required:true
+    },
     amount_unit: {
         type:Number,
         required:true
