@@ -1,12 +1,11 @@
 # Nozomu Invesment RESTful API
-Nozomu Invesment RESTful API di buat oleh Aulia Tanzilu Akmal menggunakan ExpressJS dan MongoDB sebagai Database.
+Nozomu Investment RESTful API created by Aulia Tanzilu Akmal using ExpressJS and MongoDB as Database. 
 
 ## Requirement
 - [NodeJS](https://nodejs.org/en/)
 - [NPM](https://www.npmjs.com/get-npm)
 - [POSTMAN](https://www.postman.com/)
 - [MongoDb Atlas](https://www.mongodb.com/cloud/atlas)\
-- 
 
 ## Project Setup
 ```sh
