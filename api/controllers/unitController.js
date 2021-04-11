@@ -54,7 +54,7 @@ let transaction = async (req, res, type) => {
     try {
         await Unit.findOneAndUpdate({user_id: req.body.user_id}, {unit: currentUnit})
     } catch (error) {
-        await History.deleteOne({user_id: req.body.user_id});
+        await History.deleteOne({_id: history._id });
         res.status(500).send(error)
     }
     
