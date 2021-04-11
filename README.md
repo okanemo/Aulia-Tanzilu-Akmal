@@ -76,3 +76,10 @@ API to withdraw balance
 /api/v1/ib/withdraw
 
 ```
+
+API to get history transaction
+
+```bash
+/api/v1/ib/history
+
+```

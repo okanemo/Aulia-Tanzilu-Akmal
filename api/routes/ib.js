@@ -5,6 +5,7 @@ const { topup, withdraw } = require('../controllers/unitController')
 const { member } = require('../controllers/userController')
 const { validateRequest } = require('../middlewares/validateRequest')
 const { body } = require('express-validator')
+const { history } = require('../controllers/historyController')
 
 ibRouter.post('/updateTotalBalance', 
     [
@@ -36,6 +37,14 @@ ibRouter.post('/withdraw',
 
 ibRouter.get('/member', 
     member
+)
+
+ibRouter.get('/history', 
+    [
+        body('user_id').not().isEmpty().withMessage('User Id is required')
+    ],
+    validateRequest,
+    history
 )
 
 module.exports = ibRouter
