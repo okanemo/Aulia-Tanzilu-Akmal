@@ -35,51 +35,99 @@ npx nodemon server.js
 
 ## List Endpoints
 
-API to add a new user
+1. API to add a new user
 
 ```bash
 /api/v1/user/add
 
 ```
 
-API to get all user
+example input 
+
+```bash
+{
+    "name" : "Aulia Tanzilu Akmal",
+    "username" : "akmal"
+}
+
+```
+
+2. API to get all user
 
 ```bash
 /api/v1/ib/member
 
 ```
 
-API to update total balance
+3. API to update total balance
 
 ```bash
 /api/v1/ib/updateTotalBalance
 
 ```
 
-API to get all NAB
+example input 
+
+```bash
+{
+    "current_balance" : 2800000
+}
+
+```
+
+
+4. API to get all NAB
 
 ```bash
 /api/v1/ib/listNAB
 
 ```
 
-API to deposit balance
+5. API to deposit balance
 
 ```bash
 /api/v1/ib/topup
 
 ```
 
-API to withdraw balance
+example input 
+
+```bash
+{
+    "user_id" : "606ff6cc54377216b0946621",
+    "amount_rupiah" : 50000
+}
+
+```
+
+6. API to withdraw balance
 
 ```bash
 /api/v1/ib/withdraw
 
 ```
 
-API to get history transaction
+example input
+
+```bash
+{
+    "user_id" : "606ef4d0f29f9328b09f835c",
+    "amount_rupiah" : 100
+}
+```
+
+7. API to get history transaction
 
 ```bash
 /api/v1/ib/history
+
+```
+
+example input
+
+```bash
+{
+    "user_id" : "606ef4d0f29f9328b09f835c",
+}
 
 ```
