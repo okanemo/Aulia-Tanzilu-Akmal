@@ -28,7 +28,7 @@ var uri = "mongodb+srv://<username>:<password>@cluster0.b6yer.mongodb.net/myFirs
 
 ## Project Run
 ```sh
-# Run the project with nodemon
+# Run the project
 npm run dev
 
 ```
